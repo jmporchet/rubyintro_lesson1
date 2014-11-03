@@ -25,5 +25,4 @@ when "4"
 else
   result = "not a valid choice"
 end
-binding.pry
 puts result
