@@ -7,35 +7,12 @@ current_moves = {1=>" ", 2=>" ", 3=>" ", 4=>" ", 5=>" ", 6=>" ", 7=>" ", 8=>" ",
 def check_for_win (moves)
   player_moves = moves.select { |i,m| m == 'x' }.keys
   computer_moves = moves.select { |i,m| m == 'o' }.keys
-  if WINNING_MOVES.include? player_moves 
-    "You won!"
-  elsif WINNING_MOVES.include? computer_moves
-    "You lost!"
+
+  WINNING_MOVES.each do |line|
+    return "You won!" if moves.values_at(*line).count('x') == 3 
+    return "You lost!" if moves.values_at(*line).count('o') == 3 
   end
-  binding.pry
-  #return nothing by default
-end
-
-def run_tests
-  #game in progress
-  current_moves = {1=>nil, 2=>'o', 3=>nil, 4=>nil, 5=>'x', 6=>nil, 7=>nil, 8=>'o', 9=>'x' }
-  puts check_for_win current_moves
-
-  #computer WINNING_MOVES
-  current_moves = {1=>'o', 2=>'o', 3=>'o', 4=>nil, 5=>nil, 6=>nil, 7=>nil, 8=>nil, 9=>nil }
-  puts check_for_win current_moves
-
-  #player WINNING_MOVES
-  current_moves = {1=>'x', 2=>'x', 3=>'x', 4=>nil, 5=>'o', 6=>nil, 7=>nil, 8=>'o', 9=>nil }
-  puts check_for_win current_moves
-
-  #player WINNING_MOVES
-  current_moves = {1=>'x', 2=>'o', 3=>nil, 4=>'o', 5=>'x', 6=>nil, 7=>nil, 8=>nil, 9=>'x' }
-  puts check_for_win current_moves
-end
-
-def draw_placeholder_cell (pos)
-  pos.fetch(pos.to_i) == nil ? " " : current_moves.fetch(pos.to_i)
+  nil
 end
 
 def draw_grid(current_moves)
@@ -46,21 +23,6 @@ def draw_grid(current_moves)
       puts "  #{current_moves.fetch(line*3+1)}  |  #{current_moves.fetch(line*3+2)}  |  #{current_moves.fetch(line*3+3)}  "
       puts "_____|_____|_____"
   end
-
-=begin
-  puts "     |     |     "
-  puts "  " + current_moves.fetch(1).to_s + "  |  " + current_moves.fetch(2).to_s + "  |  " + current_moves.fetch(3).to_s + "  "
-  puts "     |     |     "
-  puts "-----|-----|-----"
-  puts "     |     |     "
-  puts "  " + current_moves.fetch(4).to_s + "  |  " + current_moves.fetch(5).to_s + "  |  " + current_moves.fetch(6).to_s + "  "
-  puts "     |     |     "
-  puts "-----|-----|-----"
-  puts "     |     |     "
-  puts "  " + current_moves.fetch(7).to_s + "  |  " + current_moves.fetch(8).to_s + "  |  " + current_moves.fetch(9).to_s + "  "
-  puts "     |     |     "
-=end
-
 end
 
 loop do
@@ -90,7 +52,3 @@ loop do
     run_tests
   end
 end
-
-
-
-
