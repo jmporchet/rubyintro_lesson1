@@ -48,11 +48,11 @@ def evaluate_winner(player_hand, dealer_hand)
   player_score = calculate_hand player_hand
   dealer_score = calculate_hand dealer_hand
   if player_score == dealer_score
-    "draw"
+    puts "It's a draw"
   elsif player_score > dealer_score
-    "You"
+    puts "You won!"
   else 
-    "dealer"
+    puts "The dealer won..."
   end
 end
 
@@ -71,8 +71,8 @@ else
   puts "Your score is #{calculate_hand(player_hand)}"
 end
 
-hit dealer_hand, deck, "dealer"
-hit dealer_hand, deck, "dealer"
+hit dealer_hand, deck, "The dealer"
+hit dealer_hand, deck, "The dealer"
 dealer_score = calculate_hand(dealer_hand)
 if dealer_score == 21
   puts "The dealer's got Blackjack!"
@@ -90,7 +90,7 @@ while gets.chomp == 'hit'
 end
 
 while ( calculate_hand(dealer_hand) < 17 )
-  hit dealer_hand, deck, "dealer"
+  hit dealer_hand, deck, "The dealer"
   puts "The dealer's score is " + calculate_hand(dealer_hand).to_s
   if busted? dealer_hand
     puts "The dealer was busted!"
@@ -98,4 +98,4 @@ while ( calculate_hand(dealer_hand) < 17 )
   end
 end
 
-puts "The winner is " + evaluate_winner(player_hand, dealer_hand)
+evaluate_winner player_hand, dealer_hand
