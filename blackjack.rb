@@ -99,5 +99,3 @@ while ( calculate_hand(dealer_hand) < 17 )
 end
 
 puts "The winner is " + evaluate_winner(player_hand, dealer_hand)
-
-exit
