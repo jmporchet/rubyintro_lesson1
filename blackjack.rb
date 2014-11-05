@@ -80,6 +80,7 @@ else
   puts "The dealer's score is #{calculate_hand(dealer_hand)}"
 end
 
+puts "hit or stay?"
 while gets.chomp == 'hit'
   hit(player_hand, deck, player)
   puts "Your score is " + calculate_hand(player_hand).to_s
@@ -87,6 +88,7 @@ while gets.chomp == 'hit'
     puts "You busted!"
     exit
   end
+  puts "hit or stay?"
 end
 
 while ( calculate_hand(dealer_hand) < 17 )
