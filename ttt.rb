@@ -27,7 +27,7 @@ end
 
 loop do
   #ask for position
-  puts "Positions " + current_moves.select { |index,move| move != nil }.keys.to_s + " are already taken. Which position? (1-9, 0 for tests)"
+  puts "Positions " + current_moves.select { |index,move| move != " " }.keys.to_s + " are already taken. Which position? (1-9, 0 for tests)"
   pos = gets.chomp.to_i
 
   case pos
